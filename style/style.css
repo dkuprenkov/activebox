@@ -2,4 +2,23 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}/*# sourceMappingURL=style.css.map */
+}
+
+.body {
+  font-family: "Raleway", sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.features {
+  padding: 110px 0 116px;
+}
+.features__content {
+  display: grid;
+}
+
+/*# sourceMappingURL=style.css.map */
