@@ -34,11 +34,60 @@ $mobile: 767px;
   margin: $margin;
   padding: $padding;
 }
-
+//Flex-Grid
 @mixin flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@mixin grid($columns: 3, $gap: 20px, $rows: auto) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  grid-template-rows: $rows;
+  gap: $gap;
+}
+
+@mixin width-height($width: 100%, $height: 100%) {
+  width: $width;
+  height: $height;
+}
+// Padding
+@mixin p($padding) {
+  padding: $padding;
+}
+
+@mixin py($padding) {
+  padding-top: $padding;
+  padding-bottom: $padding;
+}
+
+@mixin px($padding) {
+  padding-left: $padding;
+  padding-right: $padding;
+}
+
+// Margin
+@mixin m($margin) {
+  margin: $margin;
+}
+
+@mixin my($margin) {
+  margin-top: $margin;
+  margin-bottom: $margin;
+}
+
+@mixin mx($margin) {
+  margin-left: $margin;
+  margin-right: $margin;
+}
+
+@mixin mb($margin) {
+  margin-bottom: $margin;
+}
+
+@mixin mt($margin) {
+  margin-top: $margin;
 }
 
 *{
@@ -53,13 +102,84 @@ $mobile: 767px;
 
 .container{
   @include container(1200px, 0 auto, 0 15px);
+
+  @include responsive($tablet){
+    @include container(1014px, 0 auto, 0 15px)
+  }
 }
 
 .features{
-  padding: 110px 0 116px;
+  @include py(116px);
+
+  @include responsive($tablet){
+    @include py(79px);
+  }
+
+  @include responsive($mobile){
+    @include p(40px 0 35px);
+  }
+
+  &__container{
+    @include grid(3, 88px 29px);
+
+    @include responsive($tablet){
+      @include grid(3, 50px 20px);
+    }
+
+    @include responsive($mobile){
+      @include grid(1, 42px 0);
+    }
+  }
 
   &__content{
-    display: grid;
+    text-align: center;
+  }
 
+  &__wrapper-icon{
+    @include m(0 auto 51px);
+
+    @include width-height(100px, 100px);
+    @include flex-center;
+
+    @include responsive($tablet){
+      @include width-height(85px, 84px);
+      @include mb(45px);
+    }
+
+    @include responsive($mobile){
+      @include width-height(76px, 76px);
+      @include mb(37px);
+    }
+
+    &__icon{
+      @include width-height;
+    }
+  }
+
+  &__title{
+    color: $color-black;
+    text-transform: uppercase;
+
+    @include mb(42px);
+    @include font(24px, 28px, 900);
+
+    @include responsive($tablet){
+      @include font(18px, 21px, 900);
+      @include mb(24px);
+    }
+
+    @include responsive($mobile){
+      @include mb(9px);
+    }
+  }
+
+  &__text{
+    color: $color-grey;
+
+    @include font(18px, 21px);
+
+    @include responsive($tablet){
+      @include font(14px, 16px);
+    }
   }
 }
