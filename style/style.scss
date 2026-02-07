@@ -142,17 +142,13 @@ $mobile: 767px;
     @include flex-center;
 
     @include responsive($tablet){
-      @include width-height(85px, 84px);
+      @include width-height(85px, 85px);
       @include mb(45px);
     }
 
     @include responsive($mobile){
       @include width-height(76px, 76px);
       @include mb(37px);
-    }
-
-    &__icon{
-      @include width-height;
     }
   }
 
