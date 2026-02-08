@@ -47,16 +47,12 @@ $mobile: 767px;
   box-sizing: border-box;
 }
 
-.body{
+body{
 	font-family: $main-font;
 }
 
 .container {
-  @include container(1200px, 0 auto, 0 15px);
-
-	@include responsive($tablet){
-		@include container(1014px, 0 auto, 0 15px);
-	}
+  @include container(1210px, 0 auto, 0 20px);
 }
 
 .banner{
@@ -142,6 +138,7 @@ $mobile: 767px;
 
 		@include responsive($mobile){
 			max-width: 280px;
+			padding: 15px;
 			@include font(24px, 28px, 900);
 		}
 	}
@@ -187,38 +184,6 @@ $mobile: 767px;
 		}
 	}
 
-	.nav{
-
-		@include responsive($mobile){
-			display: none;
-		}
-
-		&__list{
-			display: flex;
-			gap: 40px;
-
-			@include responsive($tablet){
-				gap: 25px;
-			}
-		}
-
-		&__link{
-			color: $main-color;
-			text-decoration: none;
-		}
-
-		&__item{
-			list-style: none;
-			text-transform: uppercase;
-
-			@include font(13px, 15px, 700);
-
-			@include responsive($tablet){
-				@include font(12px, 14px, 700);
-			}
-		}
-	}
-
 	&__menu{
 		display: none;
 		background: transparent;
@@ -228,6 +193,35 @@ $mobile: 767px;
 
 		@include responsive($mobile){
 			display: flex;
+		}
+	}
+}
+
+.nav{
+
+	@include responsive($mobile){
+		display: none;
+	}
+
+	&__list{
+		display: flex;
+		gap: 40px;
+		list-style: none;
+
+		@include responsive($tablet){
+			gap: 25px;
+		}
+	}
+
+	&__link{
+		color: $main-color;
+		text-decoration: none;
+		text-transform: uppercase;
+
+		@include font(13px, 15px, 700);
+
+		@include responsive($tablet){
+			@include font(12px, 14px, 700);
 		}
 	}
 }
