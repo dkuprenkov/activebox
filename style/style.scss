@@ -43,10 +43,9 @@ $mobile: 767px;
   align-items: center;
 }
 
-@mixin grid($columns: 3, $gap: 0, $rows: auto) {
+@mixin grid($columns: 3, $gap: 0,) {
   display: grid;
   grid-template-columns: repeat($columns, 1fr);
-  grid-template-rows: $rows;
   gap: $gap;
 }
 
@@ -104,10 +103,6 @@ $mobile: 767px;
 
 .container{
   @include container($desktop);
-
-  @include responsive($tablet){
-    @include container($tablet)
-  }
 }
 
 .works{
@@ -119,74 +114,74 @@ $mobile: 767px;
       @include grid(2, 1px);
     }
   }
+}
 
-  .work{
-    aspect-ratio: 380/340;
-    position: relative;
-    overflow: hidden;
-    cursor: auto;
+.work{
+  aspect-ratio: 380/340;
+  position: relative;
+  overflow: hidden;
+  cursor: auto;
 
-    &:hover {
-      .work__img {
-        transform: scale(1.1);
-      }
-
-      .work__content {
-        opacity: 1;
-      }
+  &:hover {
+    .work__img {
+      transform: scale(1.1);
     }
 
-    &__img{
-      @include width-height;
-      object-fit: cover;
-      object-position: center;
-      transition: transform 0.4s ease;
+    .work__content {
+      opacity: 1;
+    }
+  }
+
+  &__img{
+    @include width-height;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.4s ease;
+  }
+
+  &__content{
+    position: absolute;
+    top: 0;
+    left: 0;
+    @include width-height;
+    background-color: $color-red-bg;
+    transition: 0.3s ease;
+    opacity: 0;
+    z-index: 1;
+    @include p(10px);
+    text-align: center;
+
+    @include flex-center;
+    flex-direction: column;
+
+    @include responsive($mobile){
+      @include p(5px);
+    }
+  }
+
+  &__title{
+    color: $main-color;
+    text-transform: uppercase;
+    @include font(24px ,28px ,900);
+    @include mb(37px);
+
+    @include responsive($tablet){
+      @include font(18px ,21px ,900);
+      @include mb(23px);
     }
 
-    &__content{
-      position: absolute;
-      top: 0;
-      left: 0;
-      @include width-height;
-      background-color: $color-red-bg;
-      transition: 0.3s ease;
-      opacity: 0;
-      z-index: 1;
-      @include p(10px);
-      text-align: center;
-
-      @include flex-center;
-      flex-direction: column;
-
-      @include responsive($mobile){
-        @include p(5px);
-      }
+    @include responsive($mobile){
+      @include mb(7px);
     }
+  }
 
-    &__title{
-      color: $main-color;
-      text-transform: uppercase;
-      @include font(24px ,28px ,900);
-      @include mb(37px);
+  &__text{
+    color: $main-color;
+    text-transform: capitalize;
+    @include font(18px ,21px);
 
-      @include responsive($tablet){
-        @include font(18px ,21px ,900);
-        @include mb(23px);
-      }
-
-      @include responsive($mobile){
-        @include mb(7px);
-      }
-    }
-
-    &__text{
-      color: $main-color;
-      text-transform: capitalize;
-      @include font(18px ,21px);
-
-      @include responsive($tablet){
-        @include font(14px ,16px);
-      }
+    @include responsive($tablet){
+      @include font(14px ,16px);
     }
   }
 }
