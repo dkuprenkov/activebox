@@ -50,10 +50,9 @@ $mobile: 767px;
   align-items: center;
 }
 
-@mixin grid($columns: 3, $gap: 0, $rows: auto) {
+@mixin grid($columns: 3, $gap: 0) {
   display: grid;
   grid-template-columns: repeat($columns, 1fr);
-  grid-template-rows: $rows;
   gap: $gap;
 }
 
@@ -105,16 +104,12 @@ $mobile: 767px;
   box-sizing: border-box;
 }
 
-.body{
+body{
   font-family: $main-font;
 }
 
 .container{
-  @include container(1200px, 0 auto, 0 15px);
-
-  @include responsive($tablet){
-    @include container(1014px, 0 auto, 0 15px)
-  }
+  @include container(1210px, 0 auto, 0 20px);
 }
 
 .team{
