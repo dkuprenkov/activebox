@@ -1,5 +1,219 @@
+$main-font: 'Raleway', sans-serif;
+$extra-font: 'Cardo', sans-serif;
+
+$main-color: #FFFFFF;
+$color-black: #2D3033;
+$color-grey: #6C7279;
+$color-grey-icon: #C6CBCD;
+$color-red: #FF4343;
+$color-red-bg: rgba(255, 67, 67, 0.8);
+$color-bg: #252B49;
+
+$desktop: 1510px;
+$tablet: 1024px;
+$mobile: 767px;
+
+@mixin responsive($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin tablet-only {
+  @media (min-width: #{$mobile + 1}) and (max-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin font($fontSize, $lineHeight, $fontWeight: 400) {
+  font-size: $fontSize;
+  line-height: $lineHeight;
+  font-weight: $fontWeight;
+}
+
+@mixin background($bgImage: none, $bgSize: cover, $bgPosition: center, $bgRepeat: no-repeat) {
+  background-image: url($bgImage);
+  background-size: $bgSize;
+  background-position: $bgPosition;
+  background-repeat: $bgRepeat;
+}
+
+@mixin container($maxWidth, $margin: 0, $padding: 0){
+  max-width: $maxWidth;
+  margin: $margin;
+  padding: $padding;
+}
+//Flex-Grid
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin grid($columns: 3, $gap: 0, $rows: auto) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  grid-template-rows: $rows;
+  gap: $gap;
+}
+
+@mixin width-height($width: 100%, $height: 100%) {
+  width: $width;
+  height: $height;
+}
+// Padding
+@mixin p($padding) {
+  padding: $padding;
+}
+
+@mixin py($padding) {
+  padding-top: $padding;
+  padding-bottom: $padding;
+}
+
+@mixin px($padding) {
+  padding-left: $padding;
+  padding-right: $padding;
+}
+
+// Margin
+@mixin m($margin) {
+  margin: $margin;
+}
+
+@mixin my($margin) {
+  margin-top: $margin;
+  margin-bottom: $margin;
+}
+
+@mixin mx($margin) {
+  margin-left: $margin;
+  margin-right: $margin;
+}
+
+@mixin mb($margin) {
+  margin-bottom: $margin;
+}
+
+@mixin mt($margin) {
+  margin-top: $margin;
+}
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.body{
+  font-family: $main-font;
+}
+
+.container{
+  @include container(1200px, 0 auto, 0 15px);
+
+  @include responsive($tablet){
+    @include container(1014px, 0 auto, 0 15px)
+  }
+}
+
+.team{
+  @include py(114px);
+
+  @include responsive($tablet){
+    @include py(78px);
+  }
+
+  @include responsive($mobile){
+    @include py(35px);
+  }
+
+  &__container{
+    @include grid(4, 30px);
+
+    @include responsive($tablet){
+      @include grid(4, 25px);
+    }
+
+    @include responsive($mobile){
+      @include grid(1, 50px);
+    }
+  }
+
+  &__photo{
+    aspect-ratio: 1/1;
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+    @include mb(30px);
+
+    @include responsive($tablet){
+      @include mb(25px);
+    }
+  }
+
+  &__info{
+    text-align: left;
+  }
+
+  &__name{
+    color: $color-black;
+    text-transform: capitalize;
+    @include mb(5px);
+    @include font(24px, 28px, 700);
+
+    @include responsive($tablet){
+      @include mb(4px);
+      @include font(18px, 21px, 700);
+    }
+  }
+
+  &__position{
+    color: $color-red;
+    text-transform: uppercase;
+    @include mb(18px);
+    @include font(18px, 21px);
+
+    @include responsive($tablet){
+      @include mb(22px);
+      @include font(14px, 16px);
+    }
+  }
+
+  &__description{
+    color: $color-grey;
+    @include mb(38px);
+    @include font(18px, 21px);
+
+    @include responsive($tablet){
+      @include mb(39px);
+      @include font(14px, 16px);
+    }
+
+    @include responsive($mobile){
+      @include mb(55px);
+    }
+  }
+
+  &__socials{
+    @include flex-center;
+    justify-content: flex-start;
+    gap: 6px;
+    list-style: none;
+
+    @include tablet-only{
+      gap: 5px;
+    }
+  }
+
+  &__link{
+    @include width-height(39px, 39px);
+    border: 1px solid $color-grey-icon;
+    background: transparent;
+    @include flex-center;
+
+    @include tablet-only{
+      @include width-height(33px, 33px);
+    }
+  }
 }
