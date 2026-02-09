@@ -121,27 +121,53 @@ body{
   display: flex;
   gap: 31px;
 
+  @include responsive($tablet){
+    gap: 19px;
+  }
+
+  @include responsive($mobile){
+    flex-direction: column;
+    gap: 25px;
+  }
+
   &__wrapper-image{
     display: flex;
-    flex: 0 1 570px;
+    flex: 0 1 50%;
+    aspect-ratio: 570/490;
+
+    @include responsive($tablet){
+      aspect-ratio: 482/332;
+    }
+
+    @include responsive($mobile){
+      aspect-ratio: 280/218;
+    }
   }
 
   &__image{
     object-fit: cover;
     object-position: center;
     overflow: hidden;
-    aspect-ratio: 570/490;
     @include width-height;
   }
 
   &__content{
     display: flex;
-    flex: 0 1 570px;
-    align-self: center;
+    flex: 0 1 50%;
     flex-direction: column;
     text-align: left;
     color: $main-color;
     @include py(116px);
+    align-self: center;
+
+    @include responsive($tablet){
+      @include p(110px 0 104px);
+    }
+
+    @include responsive($mobile){
+      @include p(0 0 95px);
+      text-align: center;
+    }
   }
 
   &__text{
@@ -150,10 +176,19 @@ body{
     text-transform: capitalize;
     @include mb(34px);
     @include font(36px, 49px);
+
+    @include responsive($tablet){
+      @include mb(9px);
+      @include font(24px, 32px);
+    }
   }
 
   &__author{
     text-transform: uppercase;
-    @include font(13px, 15px, 700)
+    @include font(13px, 15px, 700);
+
+    @include responsive($tablet){
+      @include font(12px, 14px, 700);
+    }
   }
 }
