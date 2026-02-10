@@ -1,5 +1,180 @@
+$main-font: 'Raleway', sans-serif;
+$extra-font: 'Cardo', italic;
+
+$main-color: #FFFFFF;
+$color-black: #2D3033;
+$color-grey: #6C7279;
+$color-grey-icon: #C6CBCD;
+$color-red: #FF4343;
+$color-red-bg: rgba(255, 67, 67, 0.8);
+$color-bg: #252B49;
+$color-purple: #5C3249;
+
+$desktop: 1510px;
+$tablet: 1024px;
+$mobile: 767px;
+
+@mixin responsive($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin tablet-only {
+  @media (min-width: #{$mobile + 1}) and (max-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin font($fontSize, $lineHeight, $fontWeight: 400) {
+  font-size: $fontSize;
+  line-height: $lineHeight;
+  font-weight: $fontWeight;
+}
+
+@mixin background($bgImage: none, $bgSize: cover, $bgPosition: center, $bgRepeat: no-repeat) {
+  background-image: url($bgImage);
+  background-size: $bgSize;
+  background-position: $bgPosition;
+  background-repeat: $bgRepeat;
+}
+
+@mixin container($maxWidth, $margin: 0, $padding: 0){
+  max-width: $maxWidth;
+  margin: $margin;
+  padding: $padding;
+}
+//Flex-Grid
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin grid($columns: 3, $gap: 0) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}
+
+@mixin width-height($width: 100%, $height: 100%) {
+  width: $width;
+  height: $height;
+}
+// Padding
+@mixin p($padding) {
+  padding: $padding;
+}
+
+@mixin py($padding) {
+  padding-top: $padding;
+  padding-bottom: $padding;
+}
+
+@mixin px($padding) {
+  padding-left: $padding;
+  padding-right: $padding;
+}
+
+// Margin
+@mixin m($margin) {
+  margin: $margin;
+}
+
+@mixin my($margin) {
+  margin-top: $margin;
+  margin-bottom: $margin;
+}
+
+@mixin mx($margin) {
+  margin-left: $margin;
+  margin-right: $margin;
+}
+
+@mixin mb($margin) {
+  margin-bottom: $margin;
+}
+
+@mixin mt($margin) {
+  margin-top: $margin;
+}
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body{
+  font-family: $main-font;
+}
+
+.container{
+  @include container(1210px, 0 auto, 0 20px);
+}
+
+.download{
+  @include p(132px 0 114px);
+  text-align: center;
+
+  @include responsive($tablet){
+    @include p(94px 0 78px);
+  }
+
+  @include responsive($mobile){
+    @include p(65px 0 45px);
+  }
+
+  &__title{
+    @include font(30px, 35px, 500);
+    @include mb(22px);
+
+    @include responsive($tablet){
+      @include font(24px, 28px, 500);
+      @include mb(21px);
+    }
+
+    @include responsive($mobile){
+      @include font(18px, 21px, 500);
+      @include mb(11px);
+    }
+  }
+
+  &__text{
+    @include font(18px, 21px, 700);
+    @include mb(50px);
+
+    @include responsive($tablet){
+      @include font(14px, 16px, 700);
+      @include mb(46px);
+    }
+
+    @include responsive($mobile){
+      @include font(13px, 15px, 700);
+      @include mb(14px);
+    }
+  }
+
+  &__button{  //после слияния заменим общие классы из секции banner
+    @include font(24px, 28px, 900);
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+    max-width: 370px;
+    width: 100%;
+    background: $color-red;
+    @include p(25px);
+    border: none;
+    color: $main-color;
+
+    @include responsive($tablet){
+      max-width: 313px;
+      @include font(18px, 21px, 900);
+      @include p(28px);
+    }
+
+    @include responsive($mobile){
+      max-width: 280px;
+    }
+  }
 }
