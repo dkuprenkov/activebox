@@ -4,10 +4,13 @@ $extra-font: 'Cardo', italic;
 $main-color: #FFFFFF;
 $color-black: #2D3033;
 $color-grey: #6C7279;
+$color-grey-copy: #808080;
 $color-grey-icon: #C6CBCD;
 $color-red: #FF4343;
 $color-red-bg: rgba(255, 67, 67, 0.8);
 $color-bg: #252B49;
+$color-bg-blue: #353C65;
+$color-bg-dark-blue: #2C3154;
 $color-purple: #5C3249;
 
 $desktop: 1510px;
@@ -64,6 +67,14 @@ $mobile: 767px;
 // Padding
 @mixin p($padding) {
   padding: $padding;
+}
+
+@mixin pb($padding) {
+  padding-bottom: $padding;
+}
+
+@mixin pt($padding) {
+  padding-top: $padding;
 }
 
 @mixin py($padding) {
@@ -681,6 +692,120 @@ body{
 
     @include responsive($mobile){
       max-width: 280px;
+    }
+  }
+}
+
+.footer{
+  @include pt(71px);
+  background-color: $color-bg-blue;
+  text-align: center;
+
+  @include responsive($tablet){
+    @include pt(47px);
+  }
+
+  @include responsive($mobile){
+    @include pt(34px);
+  }
+
+  &__container{
+    @include grid(3, 30px);
+    @include pb(67px);
+
+    @include responsive($tablet){
+      gap: 20px;
+      @include pb(41px);
+    }
+
+    @include responsive($mobile){
+      @include grid(1, 64px);
+      @include pb(38px);
+    }
+  }
+
+  &__content{
+    display: flex;
+    flex-direction: column;
+    color: $main-color;
+  }
+
+  &__title{
+    @include font(18px, 21px, 700);
+    @include mb(29px);
+
+    @include responsive($tablet){
+      @include font(14px, 16px, 700);
+      @include mb(18px);
+    }
+
+    @include responsive($mobile){
+      @include mb(34px);
+    }
+  }
+
+  &__text{
+    @include font(18px, 21px);
+
+    @include responsive($tablet){
+      @include font(14px, 16px);
+    }
+  }
+
+  &__socials{
+    @include flex-center;
+    gap: 27px;
+    list-style: none;
+    @include mt(19px);
+
+    @include responsive($tablet){
+      gap: 20px;
+      @include mt(15px);
+    }
+
+    @include responsive($mobile){
+      gap: 16px;
+      @include mt(3px);
+    }
+  }
+
+  &__link{
+    @include width-height(39px, 39px);
+    border: 1px solid $color-grey-icon;
+    background: transparent;
+    @include flex-center;
+
+    @include responsive($tablet){
+      @include width-height(33px, 33px);
+    }
+  }
+}
+
+.copy{
+  @include py(24px);
+  background-color: $color-bg-dark-blue;
+
+  @include responsive($tablet){
+    @include py(14px);
+  }
+
+  @include responsive($mobile){
+    @include p(30px 0 28px);
+  }
+
+  &__container{
+    @include container(410px, 0 auto, 0 20px);
+  }
+
+  &__text{
+    @include font(18px, 21px);
+    color: $color-grey-copy;
+
+    @include responsive($tablet){
+      @include font(14px, 16px);
+    }
+    &-white{
+      color: $main-color;
     }
   }
 }
