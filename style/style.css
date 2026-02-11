@@ -395,4 +395,135 @@ body {
   }
 }
 
+.team {
+  padding-top: 114px;
+  padding-bottom: 114px;
+}
+@media (max-width: 1024px) {
+  .team {
+    padding-top: 78px;
+    padding-bottom: 78px;
+  }
+}
+@media (max-width: 767px) {
+  .team {
+    padding-top: 35px;
+    padding-bottom: 35px;
+  }
+}
+.team__container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+@media (max-width: 1024px) {
+  .team__container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+  }
+}
+@media (max-width: 767px) {
+  .team__container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 50px;
+  }
+}
+.team__photo {
+  aspect-ratio: 1/1;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+  margin-bottom: 30px;
+}
+@media (max-width: 1024px) {
+  .team__photo {
+    margin-bottom: 25px;
+  }
+}
+.team__info {
+  text-align: left;
+}
+.team__name {
+  color: #2D3033;
+  text-transform: capitalize;
+  margin-bottom: 5px;
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 700;
+}
+@media (max-width: 1024px) {
+  .team__name {
+    margin-bottom: 4px;
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: 700;
+  }
+}
+.team__position {
+  color: #FF4343;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: 400;
+}
+@media (max-width: 1024px) {
+  .team__position {
+    margin-bottom: 22px;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 400;
+  }
+}
+.team__description {
+  color: #6C7279;
+  margin-bottom: 38px;
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: 400;
+}
+@media (max-width: 1024px) {
+  .team__description {
+    margin-bottom: 39px;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 400;
+  }
+}
+@media (max-width: 767px) {
+  .team__description {
+    margin-bottom: 55px;
+  }
+}
+.team__socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  list-style: none;
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .team__socials {
+    gap: 5px;
+  }
+}
+.team__link {
+  width: 39px;
+  height: 39px;
+  border: 1px solid #C6CBCD;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .team__link {
+    width: 33px;
+    height: 33px;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */
