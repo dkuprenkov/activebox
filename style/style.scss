@@ -1,5 +1,5 @@
 $main-font: 'Raleway', sans-serif;
-$extra-font: 'Cardo', sans-serif;
+$extra-font: 'Cardo', italic;
 
 $main-color: #FFFFFF;
 $color-black: #2D3033;
@@ -8,8 +8,9 @@ $color-grey-icon: #C6CBCD;
 $color-red: #FF4343;
 $color-red-bg: rgba(255, 67, 67, 0.8);
 $color-bg: #252B49;
+$color-purple: #5C3249;
 
-$desktop: 2560px;
+$desktop: 1510px;
 $tablet: 1024px;
 $mobile: 767px;
 
@@ -534,6 +535,86 @@ body{
 
     @include tablet-only{
       @include width-height(33px, 33px);
+    }
+  }
+}
+
+.testimonials{
+  background-color: $color-purple;
+}
+
+.testimonial{
+  display: flex;
+  gap: 31px;
+
+  @include responsive($tablet){
+    gap: 19px;
+  }
+
+  @include responsive($mobile){
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  &__wrapper-image{
+    display: flex;
+    flex: 0 1 50%;
+    aspect-ratio: 570/490;
+
+    @include responsive($tablet){
+      aspect-ratio: 482/332;
+    }
+
+    @include responsive($mobile){
+      aspect-ratio: 280/218;
+    }
+  }
+
+  &__image{
+    object-fit: cover;
+    object-position: center;
+    overflow: hidden;
+    @include width-height;
+  }
+
+  &__content{
+    display: flex;
+    flex: 0 1 50%;
+    flex-direction: column;
+    text-align: left;
+    color: $main-color;
+    @include py(116px);
+    align-self: center;
+
+    @include responsive($tablet){
+      @include p(110px 0 104px);
+    }
+
+    @include responsive($mobile){
+      @include p(0 0 95px);
+      text-align: center;
+    }
+  }
+
+  &__text{
+    font-family: $extra-font;
+    font-style: italic;
+    text-transform: capitalize;
+    @include mb(34px);
+    @include font(36px, 49px);
+
+    @include responsive($tablet){
+      @include mb(9px);
+      @include font(24px, 32px);
+    }
+  }
+
+  &__author{
+    text-transform: uppercase;
+    @include font(13px, 15px, 700);
+
+    @include responsive($tablet){
+      @include font(12px, 14px, 700);
     }
   }
 }
