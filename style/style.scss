@@ -4,16 +4,20 @@ $extra-font: 'Cardo', italic;
 $main-color: #FFFFFF;
 $color-black: #2D3033;
 $color-grey: #6C7279;
+$color-grey-hover: #BABBC5;
 $color-grey-copy: #808080;
 $color-grey-icon: #C6CBCD;
 $color-red: #FF4343;
+$color-red-active: #E71414;
 $color-red-bg: rgba(255, 67, 67, 0.8);
+$color-dark-red: rgba(185, 12, 12, 0.8);
 $color-bg: #252B49;
 $color-bg-blue: #353C65;
 $color-bg-dark-blue: #2C3154;
 $color-purple: #5C3249;
+$color-brown: #7E5D6F;
 
-$desktop: 1510px;
+$desktop: 2560px;
 $tablet: 1024px;
 $mobile: 767px;
 
@@ -198,8 +202,18 @@ body{
 		padding: 25px;
 		border: none;
 		color: $main-color;
+        transition: all ease .3s ;
 
 		@include font(24px, 30px, 900);
+
+        &:hover{
+          background: $color-red-active;
+        }
+
+        &:active{
+          background: $color-red;
+          box-shadow: 4px 4px 30px $color-red;
+        }
 
 		@include responsive($tablet){
 			max-width: 314px;
@@ -286,8 +300,17 @@ body{
 		color: $main-color;
 		text-decoration: none;
 		text-transform: uppercase;
+        transition: all 0.3s ease;
 
 		@include font(13px, 15px, 700);
+
+      &:hover{
+        color: $color-grey-hover;
+      }
+
+      &:active{
+        color: $color-red-active;
+      }
 
 		@include responsive($tablet){
 			@include font(12px, 14px, 700);
@@ -392,6 +415,14 @@ body{
 
     .work__content {
       opacity: 1;
+      background-color: $color-red-bg;
+    }
+  }
+
+  &:active{
+    .work__content {
+      background-color: $color-dark-red;
+      transform: scale(1.1);
     }
   }
 
@@ -407,7 +438,6 @@ body{
     top: 0;
     left: 0;
     @include width-height;
-    background-color: $color-red-bg;
     transition: 0.3s ease;
     opacity: 0;
     z-index: 1;
@@ -482,6 +512,10 @@ body{
     @include responsive($tablet){
       @include mb(25px);
     }
+
+    &-special{
+      object-position: bottom;
+    }
   }
 
   &__info{
@@ -543,20 +577,73 @@ body{
     border: 1px solid $color-grey-icon;
     background: transparent;
     @include flex-center;
+    transition: all 0.3s ease;
+    color: $color-grey-icon;
+
+    &:hover{
+      border-color: $color-red;
+    }
+
+    &:active{
+      color: $color-red;
+    }
 
     @include tablet-only{
       @include width-height(33px, 33px);
     }
+
+    &-icon{
+      fill: currentColor;
+    }
+
   }
 }
 
 .testimonials{
-  background-color: $color-purple;
+
+  &__swiper{
+    @include p(0 0 45px);
+
+    @include responsive($tablet){
+      @include p(0 0 34px);
+    }
+
+    .swiper-pagination{
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      column-gap: 25px;
+    }
+  }
+}
+
+#testimonials{
+
+  .swiper-pagination-bullet{
+    @include width-height(14px, 14px);
+    border-radius: 50%;
+    border: 1px solid $color-brown;
+    background-color: transparent;
+    // margin: 0 !important;
+    margin: 0;
+    opacity: 1;
+
+    @include responsive($tablet){
+      @include width-height(10px, 10px);
+    }
+
+    &-active{
+      background-color: $color-brown;
+    }
+  }
 }
 
 .testimonial{
+  background-color: $color-purple;
+  @include p(0 20px);
   display: flex;
   gap: 31px;
+  @include p(0 20px);
 
   @include responsive($tablet){
     gap: 19px;
@@ -593,9 +680,9 @@ body{
     flex: 0 1 50%;
     flex-direction: column;
     text-align: left;
+    justify-content: center;
     color: $main-color;
     @include py(116px);
-    align-self: center;
 
     @include responsive($tablet){
       @include p(110px 0 104px);
@@ -683,6 +770,17 @@ body{
     @include p(25px);
     border: none;
     color: $main-color;
+
+    transition: all ease .3s ;
+
+    &:hover{
+      background: $color-red-active;
+    }
+
+    &:active{
+      background: $color-red;
+      box-shadow: 4px 4px 30px $color-red;
+    }
 
     @include responsive($tablet){
       max-width: 313px;
@@ -775,8 +873,23 @@ body{
     background: transparent;
     @include flex-center;
 
+    transition: all 0.3s ease;
+    color: $color-grey-icon;
+
+    &:hover{
+      border-color: $color-red;
+    }
+
+    &:active{
+      color: $color-red;
+    }
+
     @include responsive($tablet){
       @include width-height(33px, 33px);
+    }
+
+    &-icon{
+      fill: currentColor;
     }
   }
 }
